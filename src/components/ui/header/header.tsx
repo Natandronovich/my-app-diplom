@@ -1,7 +1,13 @@
 import { NavLink } from "react-router-dom";
 import "./headerStyle.css";
+import { ThemeButton } from "../changeThemeButton/themeButton";
+import { useContext } from "react";
+import { ThemeContext } from "../../../themeContext";
 
 export const Header = () => {
+  const dataContext: any = useContext(ThemeContext);
+  console.log("dataContext", dataContext);
+
   const activeLink = "header-list__link header-list__link-active";
   const normalLink = "header-list__link";
 
@@ -11,6 +17,7 @@ export const Header = () => {
         <div className="header-row">
           <NavLink to="/" className="logo">
             <h2>LOGO</h2>
+            <p>{dataContext.currentTheme}</p>
           </NavLink>
 
           <ul className="header-list">
@@ -24,7 +31,6 @@ export const Header = () => {
                 Home
               </NavLink>
             </li>
-
             <li className="header-list__item">
               <NavLink
                 to="/recipes"
@@ -46,7 +52,7 @@ export const Header = () => {
               </NavLink>
             </li>
           </ul>
-          <button>Change theme</button>
+          <ThemeButton />
         </div>
       </div>
     </div>
