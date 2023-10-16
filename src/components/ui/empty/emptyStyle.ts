@@ -10,7 +10,7 @@ export const emptyStyle: EmptyStyleType = {
         padding: '30px',
     },
     emptyText:{
-        color: '#171718',
+        // color: '#171718',
         fontSize: '30px',
     },
 }

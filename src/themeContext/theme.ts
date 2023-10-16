@@ -1,7 +1,7 @@
 enum Colors {
   /* Light mode */
   PAGE_BG_LIGHT = "#ffffff",
-  TEXT_COLOR_LIGHT = "#ffffff",
+  TEXT_COLOR_LIGHT =  "#171718",
   TITLE_LIGHT = "#b8e6e6ec",
   RECIPES_CARD_BG_LIGHT = "#ffffff",
   RECIPES_CARD_TEXT_LIGHT = "#171718",
@@ -9,7 +9,7 @@ enum Colors {
 
   /* Dark mode */
   PAGE_BG_DARK = "#252526",
-  TEXT_COLOR_DARK = "#171718",
+  TEXT_COLOR_DARK = "#ffffff",
   TITLE_DARK = "#ffffff",
   RECIPES_CARD_BG_DARK = "#171718",
   RECIPES_CARD_TEXT_DARK = "#ffffff",

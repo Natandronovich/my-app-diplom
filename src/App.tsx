@@ -1,9 +1,8 @@
 import React from "react";
 import "./index";
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Footer, Header, Home, LoginForm } from "./components/ui";
-import { NotFoundComponent } from "./components/ui/empty/empty";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Footer, Header, Main } from "./components/ui";
 import { ThemeContextProvider } from "./themeContext";
 
 function App() {
@@ -12,12 +11,7 @@ function App() {
       <ThemeContextProvider>
         <div className="app">
           <Header />
-          <Routes>
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/" element={<Home />} />
-            <Route path="*" element={<NotFoundComponent />} />
-          </Routes>
-          {/* <LoginForm /> */}
+          <Main />
           <Footer />
         </div>
       </ThemeContextProvider>
