@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { Theme, ThemeType } from "../../../themeContext/theme";
 
-interface PostCardProps{
+interface MainContainerProps{
     myTheme: ThemeType,
     themeStyles: Theme,
 }
 
-export const StyledMain = styled.div<PostCardProps>`
+export const StyledMain = styled.div<MainContainerProps>`
 background-color: ${({themeStyles}) => themeStyles.pageBackground};
 color: ${({themeStyles}) => themeStyles.text};
 `;
