@@ -3,7 +3,7 @@ import "./buttonStyle.css";
 interface ButtonProps {
   id: string;
   className: string;
-  buttonText: string;
+  buttonText?: string;
   onClick?: () => void;
 }
 

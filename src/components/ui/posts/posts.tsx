@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { RecipeContainer, postsStyles } from "./postsStyled";
 import { ThemeContext } from "../../../themeContext";
 import { PostCard } from "./post";
+import { Link } from "react-router-dom";
 
 export interface RecipeItem {
   id: number;
@@ -38,7 +39,9 @@ export const Recipes = () => {
   return (
     <div style={postsStyles.postsContainer}>
       {recipes.map((item) => (
-        <PostCard data={item} />
+        <Link to={`/recipes/${item.id}`}>
+          <PostCard data={item} />
+        </Link>
       ))}
     </div>
   );

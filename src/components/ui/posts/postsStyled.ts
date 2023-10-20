@@ -13,8 +13,11 @@ color: ${({ themeStyles }) => themeStyles.text};
 box-shadow: ${({ themeStyles }) => themeStyles.cardBoxShadow};
 border-radius: 10px;
 max-width: 310px;
+height: 370px;
 }
 `;
+// height: auto;
+
 
 interface PostStyleType {
   [key: string]: React.CSSProperties;
@@ -27,7 +30,8 @@ export const postsStyles: PostStyleType = {
     flexWrap: "wrap",
     columnGap: '30px',
     rowGap: '30px',
-    padding: '50px 0'
+    padding: '50px 0',
+
   },
   postImage:{
     maxWidth: "100%",
