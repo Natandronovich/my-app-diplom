@@ -1,11 +1,16 @@
 import React, { useContext } from "react";
 import { StyledMain, mainStyles } from "./mainStyled";
 import { Route, Routes } from "react-router-dom";
-import { LoginForm } from "../loginForm/loginForm";
-import { Home } from "../home/home";
-import { NotFoundComponent } from "../empty/empty";
+import {
+  CheckAuthUser,
+  Home,
+  LoginForm,
+  NotFoundComponent,
+  Recipes,
+  SignUpForm,
+  SinglePost,
+} from "../../ui";
 import { ThemeContext } from "../../../themeContext";
-import { Recipes } from "../posts/posts";
 import "../../../App.css";
 
 export const Main = () => {
@@ -24,6 +29,16 @@ export const Main = () => {
           <Route path="/" element={<Home />} />
           <Route path="/recipes" element={<Recipes />} />
           <Route path="*" element={<NotFoundComponent />} />
+          <Route path="/signup" element={<SignUpForm />} />
+          <Route
+            path="/recipes/:id"
+            element={
+              <CheckAuthUser>
+                <SinglePost />
+              </CheckAuthUser>
+            }
+            // element={<SinglePost />}
+          />
         </Routes>
       </div>
     </StyledMain>

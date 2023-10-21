@@ -1,12 +1,24 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./headerStyle.css";
 import { ThemeButton } from "../changeThemeButton/themeButton";
 import { useContext } from "react";
 import { ThemeContext } from "../../../themeContext";
+import logo from "./Logo.png";
+import { AuthContext } from "../../../authContext/authProvider";
 
 export const Header = () => {
   const dataContext: any = useContext(ThemeContext);
   console.log("dataContext", dataContext);
+
+  const dataFromContext = useContext(AuthContext);
+  console.log("AUTH", dataFromContext);
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    dataFromContext.logoutF();
+    navigate("/");
+  };
 
   const activeLink = "header-list__link header-list__link-active";
   const normalLink = "header-list__link";
@@ -16,10 +28,10 @@ export const Header = () => {
       <div className="container">
         <div className="header-row">
           <NavLink to="/" className="logo">
-            <h2>LOGO</h2>
-            <p>{dataContext.currentTheme}</p>
+            <img src={logo} alt="logo" />
+            {/* <h2>LOGO</h2> */}
+            {/* <p>{dataContext.currentTheme}</p> */}
           </NavLink>
-
           <ul className="header-list">
             <li className="header-list__item">
               <NavLink
@@ -52,6 +64,9 @@ export const Header = () => {
               </NavLink>
             </li>
           </ul>
+          <button className="logout-btn" onClick={logout}>
+            Log out
+          </button>
           <ThemeButton />
         </div>
       </div>

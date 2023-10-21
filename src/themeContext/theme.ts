@@ -6,6 +6,7 @@ enum Colors {
   RECIPES_CARD_BG_LIGHT = "#ffffff",
   RECIPES_CARD_TEXT_LIGHT = "#171718",
   BOX_SHADOW_LIGHT = "0px 5px 35px rgba(0, 0, 0, 0.25)",
+  RECIPES_BTN_BG_LIGHT = "#5c62ec",
 
   /* Dark mode */
   PAGE_BG_DARK = "#252526",
@@ -14,6 +15,7 @@ enum Colors {
   RECIPES_CARD_BG_DARK = "#171718",
   RECIPES_CARD_TEXT_DARK = "#ffffff",
   BOX_SHADOW_DARK = "0px 5px 35px rgba(0, 0, 0, 0.8)",
+  RECIPES_BTN_BG_DARK = "#898cdf",
 }
 
 export type ThemeType = "light" | "dark";
@@ -24,7 +26,7 @@ export interface Theme {
   cardBackground: Colors;
   cardText: Colors;
   cardBoxShadow: Colors;
-//   backgroundBtn: Colors;
+  backgroundBtn: Colors;
 //   fontSize: string;
 }
 
@@ -37,7 +39,7 @@ export const Themes: ThemesType = {
     cardBackground: Colors.RECIPES_CARD_BG_LIGHT,
     cardText: Colors.RECIPES_CARD_TEXT_LIGHT,
     cardBoxShadow: Colors.BOX_SHADOW_LIGHT,
-    // backgroundSignUpBtn: Colors.TITLE_LIGHT ,
+    backgroundBtn: Colors.RECIPES_BTN_BG_LIGHT ,
     // fontSize: "20px",
   },
 
@@ -47,7 +49,7 @@ export const Themes: ThemesType = {
     cardBackground: Colors.RECIPES_CARD_BG_DARK,
     cardText: Colors.RECIPES_CARD_TEXT_DARK,
     cardBoxShadow: Colors.BOX_SHADOW_DARK,
-    // backgroundBtn: Colors.TITLE_LIGHT ,
+    backgroundBtn: Colors.RECIPES_BTN_BG_DARK,
     // fontSize: "16px",
   },
 };

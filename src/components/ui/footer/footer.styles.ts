@@ -10,6 +10,13 @@ export const footerStyles: FooterStyleType = {
     color: "#ffffff",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-around",
   },
+  footerWrapper:{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    rowGap: '10px',
+  }
 };
+

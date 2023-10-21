@@ -1,5 +1,5 @@
 .title {
-	margin-bottom: 60px;
+	margin-bottom: 35px;
 	color: #201F1F;
 	font-family: Poppins;
 	font-size: 75px;
@@ -9,20 +9,8 @@
 	letter-spacing: -3px;
 
 }
-
-.title-dark-theme{
+.title.dark-theme{
 	color: #ffffff;
-	margin-bottom: 60px;
-	font-family: Poppins;
-	font-size: 75px;
-	font-style: normal;
-	font-weight: 600;
-	line-height: 120%;
-	letter-spacing: -3px;
-}
-
-.title-dark-theme span {
-	 color: #5C4EAE;
 }
 
 .title span {
@@ -41,7 +29,6 @@
 	flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-	/* margin-right: 70px; */
 }
 
 .home-descr{
@@ -62,7 +49,6 @@
 	max-width: 350px;
     color: #676767;
 }
-
 
 .home-images{
 	position: relative;

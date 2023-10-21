@@ -1,10 +1,20 @@
+import { NavLink } from "react-router-dom";
 import { footerStyles } from "./footer.styles";
+import { SocialList } from "./footerSocialList";
+import "./footerStyle.css";
 
 export const Footer = () => {
   return (
-    <div style={footerStyles.footer}>
-      <div>© 2023 Natallia Andranovich</div>
-      <div></div>
-    </div>
+    <footer style={footerStyles.footer}>
+      <div style={footerStyles.footerWrapper}>
+        <SocialList />
+        <NavLink
+          className="footer__link"
+          to="https://github.com/Natandronovich"
+        >
+          © 2023 Natallia Andranovich
+        </NavLink>
+      </div>
+    </footer>
   );
 };

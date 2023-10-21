@@ -19,7 +19,7 @@ export const Home = () => {
             className={
               dataContext.currentTheme === "light"
                 ? "title"
-                : "title-dark-theme"
+                : "title dark-theme"
             }
           >
             Enjoy Foods All Over The <span>World</span>

@@ -1,0 +1,36 @@
+.footer__social-icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-list{
+	display: flex;
+	column-gap: 30px;
+	align-items: center;
+}
+
+.footer__social-icon{
+    margin-right: 20px;
+}
+
+.footer__social-icon svg path{
+    transition: fill 0.4s;
+}
+
+.footer__social-icon:hover svg path{
+    fill: #5C4EAE;
+}
+
+.footer__social-icon svg path{
+    fill: #ffffff;
+}
+
+.footer__link {
+	color: #ffffff;
+	transition: opacity 0.2s ease-in;
+}
+
+.footer__link :hover {
+	color: #5C4EAE;
+}

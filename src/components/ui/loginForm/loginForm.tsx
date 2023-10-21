@@ -1,9 +1,10 @@
 import { FormContainer, formStyles } from "./loginSignUpForm.styled";
 import { Button } from "../../shared/button/button";
 import { FormInput } from "../../shared/field/field";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ErrorMessage } from "../../shared/errorMessage";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../authContext/authProvider";
 
 export const LoginForm = () => {
   const [userName, setUserName] = useState<string>("");
@@ -14,6 +15,12 @@ export const LoginForm = () => {
   const [passwordError, setPasswordError] = useState<boolean>(false);
 
   const navigate = useNavigate();
+
+  const dataFromAuthContext: any = useContext(AuthContext);
+  console.log(dataFromAuthContext);
+
+  const dataFromNavigate = useLocation();
+  // console.log("dataFromNavigate", dataFromNavigate);
 
   const handleChange: any = (event: React.ChangeEvent<HTMLInputElement>) => {
     const targetItem = event.target;
@@ -43,12 +50,6 @@ export const LoginForm = () => {
     }
   }, [userName]);
 
-  // useEffect(() => {
-  //   password.length > 0 && regularExpressionPassword.test(password)
-  //     ? setPasswordError(false)
-  //     : setPasswordError(true);
-  // }, [password]);
-
   const handleBlur: any = (event: React.FocusEvent<HTMLInputElement>): void => {
     switch (event.target.id) {
       case "userName":
@@ -67,13 +68,22 @@ export const LoginForm = () => {
     }
   };
 
-  const goToSignUp = () => {
-    navigate("/signup");
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    console.log(userName, password);
+    if (userName && password) {
+      dataFromAuthContext.loginF();
+      navigate(`/recipes/${dataFromNavigate.state}`, { replace: true });
+    }
   };
+
+  // const goToSignUp = () => {
+  //   navigate("/signup");
+  // };
 
   return (
     <div style={formStyles.formWrapper}>
-      <FormContainer>
+      <FormContainer onSubmit={handleSubmit}>
         <div style={formStyles.formHeader}>
           <div style={formStyles.formTitle}>Log in</div>
           <div style={formStyles.formUnderline}></div>
@@ -132,12 +142,8 @@ export const LoginForm = () => {
             className="button btn-login"
             buttonText="Log in"
           />
-          <Button
-            onClick={goToSignUp}
-            id="button-signup"
-            className="button"
-            buttonText="Sign up"
-          />
+          {/* <button onClick={goToSignUp}>Sign up</button> */}
+          <Button id="button-signup" className="button" buttonText="Sign up" />
         </div>
       </FormContainer>
     </div>

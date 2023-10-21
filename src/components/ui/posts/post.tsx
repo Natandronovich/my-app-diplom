@@ -22,13 +22,3 @@ export const PostCard: FC<RecipeCardProps> = ({ data }) => {
     </RecipeContainer>
   );
 };
-
-{
-  /* <div>
-<Button onClick={}
-  id="post-button"
-  className="post-button"
-  buttonText="Click here"
-/>
-</div> */
-}

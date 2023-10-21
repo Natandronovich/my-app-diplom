@@ -4,7 +4,7 @@ import { Theme, ThemeType } from "../../../themeContext/theme";
 interface PostCardProps {
   myTheme: ThemeType;
   themeStyles: Theme;
-  key: number;
+  key?: number;
 }
 
 export const RecipeContainer = styled.div<PostCardProps>`
@@ -44,4 +44,43 @@ export const postsStyles: PostStyleType = {
     fontSize: '24px',
     lineHeight: '1.3',
   },
+  singleRecipeContainer:{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    columnGap: '30px',
+    padding: '50px 0',
+    flexDirection: "column",
+  }
 };
+
+
+export const SingleRecipeContainer = styled.div<PostCardProps>`
+background-color: #ffffff;
+color: ${({ themeStyles }) => themeStyles.text};
+box-shadow: ${({ themeStyles }) => themeStyles.cardBoxShadow};
+border-radius: 10px;
+min-width: 500px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+min-height: 300px;
+align-items: center;
+padding:100px;
+}`
+
+
+export const ButtonSinglePost = styled.div<PostCardProps>`
+    font-weight: 700;
+    font-size: 14px;
+    width: 110px;
+    height: 30px;
+    padding: 5px;
+    background: ${({ themeStyles }) => themeStyles.backgroundBtn};
+    font-weight: 600;
+    color: #ffffff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all ease-in 0.5s;
+    text-align:center;
+`

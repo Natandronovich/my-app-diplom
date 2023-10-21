@@ -8,9 +8,9 @@ interface InputProps {
   name?: string;
   placeholder?: string;
   labelText?: string;
-  onChange?: () => void;
+  onChange?: any;
   value?: string;
-  onBlur?: () => void;
+  onBlur?: any;
   checked?: boolean;
 }
 
