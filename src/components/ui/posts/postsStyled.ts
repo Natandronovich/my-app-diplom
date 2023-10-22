@@ -49,26 +49,27 @@ export const postsStyles: PostStyleType = {
     justifyContent: "center",
     alignItems: "center",
     columnGap: '30px',
-    padding: '50px 0',
+    // padding: '30px 0',
     flexDirection: "column",
   }
+
 };
 
 
 export const SingleRecipeContainer = styled.div<PostCardProps>`
 background-color: #ffffff;
-color: ${({ themeStyles }) => themeStyles.text};
+color: #000000;
 box-shadow: ${({ themeStyles }) => themeStyles.cardBoxShadow};
 border-radius: 10px;
-min-width: 500px;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
-min-height: 300px;
 align-items: center;
-padding:100px;
+padding: 25px ;
+margin-bottom: 30px;
 }`
 
+//color: ${({ themeStyles }) => themeStyles.text};
 
 export const ButtonSinglePost = styled.div<PostCardProps>`
     font-weight: 700;
