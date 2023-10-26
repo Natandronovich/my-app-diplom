@@ -22,7 +22,7 @@ export const Recipes = () => {
   const dataContext = useContext(ThemeContext);
 
   const [categoryId, setCategoryId] = useState("");
-  console.log(categoryId);
+  // console.log(categoryId);
   const [recipes, setRecipes] = useState<RecipeItemArray>([]);
   const [isLoadind, setIsLoadding] = useState<boolean>(false);
   const [error, setError] = useState("");
@@ -90,7 +90,11 @@ export const Recipes = () => {
           />
         </div>
 
-        <ul className="tags">
+        <ul
+          className={
+            dataContext.currentTheme === "light" ? "tags " : "tags dark"
+          }
+        >
           {categories.map((obj) => (
             <li
               onClick={() => setCategoryId(obj.name)}

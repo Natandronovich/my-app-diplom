@@ -11,4 +11,5 @@ export const categories: dataCategoryType = [
   { name: "American" },
   { name: "English" },
   { name: "French" },
+  { name: "Indian" },
 ];
