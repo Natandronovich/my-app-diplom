@@ -30,6 +30,7 @@
 
 .search {
   position: relative;
+  padding-right: 20px;
 }
 
 .search input {
@@ -58,4 +59,38 @@
 .favorite-btn{
     width: 30px;
     height: 30px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tags{
+    list-style: none;
+    padding: 0;
+
+}
+
+.tags li {
+  display: inline-block;
+  padding: 12px 18px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 18px;
+  border: 1px solid transparent;
+  transition: all 0.15s ease-in-out;
+}
+
+.tags li:hover{
+    border-color: #000;
+}
+
+.tags li:active{
+  background-color: #000;
+  color: #fff;
 }

@@ -7,6 +7,7 @@ import { Bars } from "react-loader-spinner";
 import { ErrorMessage } from "../../shared/errorMessage";
 import "./postStyle.css";
 import searchImg from "../../../assets/search.svg";
+import { categories } from "./recipesData";
 
 export interface RecipeItem {
   id: number;
@@ -20,6 +21,8 @@ type RecipeItemArray = Array<RecipeItem>;
 export const Recipes = () => {
   const dataContext = useContext(ThemeContext);
 
+  const [categoryId, setCategoryId] = useState("");
+  console.log(categoryId);
   const [recipes, setRecipes] = useState<RecipeItemArray>([]);
   const [isLoadind, setIsLoadding] = useState<boolean>(false);
   const [error, setError] = useState("");
@@ -29,17 +32,17 @@ export const Recipes = () => {
   // состояние для добавление в избарнное- изначально пустой массив
   const [favoriteRecipe, setFavoriteRecipe] = useState([]);
 
+  // https://api.spoonacular.com/recipes/complexSearch?${category}
+  const category = categoryId ? `cuisine=${categoryId}` : "";
+
   useEffect(() => {
     setIsLoadding(true);
-    fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?cuisine=italian&cuisine=greek&cuisine=spain&cuisine=english`,
-      {
-        method: "GET",
-        headers: {
-          "x-api-key": "e14e7905f7ae46fc8c3f11cf7c49d213",
-        },
-      }
-    )
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?${category}`, {
+      method: "GET",
+      headers: {
+        "x-api-key": "e14e7905f7ae46fc8c3f11cf7c49d213",
+      },
+    })
       .then((response) => {
         return response.json();
       })
@@ -51,7 +54,7 @@ export const Recipes = () => {
         setError(error.message);
       })
       .finally(() => setIsLoadding(false));
-  }, []);
+  }, [categoryId]);
 
   if (isLoadind) {
     return (
@@ -76,14 +79,28 @@ export const Recipes = () => {
 
   return (
     <div className="container recipes">
-      <div className="search">
-        <img className="search__img" src={searchImg} alt="search" />
-        <input
-          value={searchValue}
-          onChange={onChangeSearchValue}
-          type="text"
-          placeholder="Find recipe..."
-        />
+      <div className="top">
+        <div className="search">
+          <img className="search__img" src={searchImg} alt="search" />
+          <input
+            value={searchValue}
+            onChange={onChangeSearchValue}
+            type="text"
+            placeholder="Find recipe..."
+          />
+        </div>
+
+        <ul className="tags">
+          {categories.map((obj) => (
+            <li
+              onClick={() => setCategoryId(obj.name)}
+              className={categoryId === obj.name ? "active" : ""}
+              key={obj.name}
+            >
+              {obj.name}
+            </li>
+          ))}
+        </ul>
       </div>
       <div style={postsStyles.postsContainer}>
         {error && <ErrorMessage errorText={error} />}
