@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Bars } from "react-loader-spinner";
 import { ErrorMessage } from "../../shared/errorMessage";
 import "./postStyle.css";
+import searchImg from "../../../assets/search.svg";
 
 export interface RecipeItem {
   id: number;
@@ -24,6 +25,9 @@ export const Recipes = () => {
   const [error, setError] = useState("");
 
   const [searchValue, setSearchValue] = useState("");
+
+  // состояние для добавление в избарнное- изначально пустой массив
+  const [favoriteRecipe, setFavoriteRecipe] = useState([]);
 
   useEffect(() => {
     setIsLoadding(true);
@@ -73,9 +77,7 @@ export const Recipes = () => {
   return (
     <div className="container recipes">
       <div className="search">
-        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
-        </svg>
+        <img className="search__img" src={searchImg} alt="search" />
         <input
           value={searchValue}
           onChange={onChangeSearchValue}

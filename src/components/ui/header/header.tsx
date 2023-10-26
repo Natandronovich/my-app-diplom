@@ -29,8 +29,6 @@ export const Header = () => {
         <div className="header-row">
           <NavLink to="/" className="logo">
             <img src={logo} alt="logo" />
-            {/* <h2>LOGO</h2> */}
-            {/* <p>{dataContext.currentTheme}</p> */}
           </NavLink>
           <ul className="header-list">
             <li className="header-list__item">
@@ -51,6 +49,16 @@ export const Header = () => {
                 }
               >
                 Recipes
+              </NavLink>
+            </li>
+            <li className="header-list__item">
+              <NavLink
+                to="/chefs"
+                className={({ isActive }) =>
+                  isActive ? activeLink : normalLink
+                }
+              >
+                Chefs
               </NavLink>
             </li>
             <li className="header-list__item">

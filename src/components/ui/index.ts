@@ -9,3 +9,4 @@ export { CheckAuthUser } from './../../authContext/checkAuth';
 export { SinglePost } from './posts/singlePost';
 export { SignUpForm } from './signUpForm/signUpForm';
 export { NotFoundComponent } from './empty/empty';
+export { Chefs } from './chefs/chefs';

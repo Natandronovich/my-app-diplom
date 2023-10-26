@@ -12,6 +12,8 @@ import { Bars } from "react-loader-spinner";
 import { Button } from "../../shared/button/button";
 
 import "./postStyle.css";
+import heartFill from "../../../assets/heart-fill.png";
+import heart from "../../../assets/heart.png";
 
 export interface SingleRecipeItem {
   id: number;
@@ -22,6 +24,7 @@ export interface SingleRecipeItem {
   readyInMinutes: number;
 }
 
+// { isFavorite }
 export const SinglePost = () => {
   const params = useParams();
   console.log("params", params);
@@ -117,6 +120,7 @@ export const SinglePost = () => {
         <div className="single-post__image">
           <img src={currentRecipe?.image} alt={currentRecipe?.title}></img>
         </div>
+
         <div className="instructions">
           <h4 className="instructions-descr">
             Ready in minutes: {currentRecipe?.readyInMinutes}
@@ -131,6 +135,14 @@ export const SinglePost = () => {
           >
             go back
           </ButtonSinglePost>
+          <img className="favorite-btn" src={heartFill} alt="heart" />
+          {/* <img
+            className="favorite-btn"
+            onClick={() => onClickFavorite(id)}
+            src={`${isFavorite ? heartFill : heart}`}
+            alt="Action"
+            src={heart}
+          /> */}
           {/* <Button
           onClick={handleGoBack}
           id="goBack"

@@ -42,15 +42,20 @@
   background: #ffffff;
 }
 
-.search svg {
-  width: 18px;
-  height: 18px;
-  position: absolute;
-  top: 17px;
-  left: 20px;
-  opacity: 0.3;
-}
+.search__img {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 17px;
+    left: 20px;
+    opacity: 0.3;
+  }
 
 .recipes{
     padding-top: 30px;
+}
+
+.favorite-btn{
+    width: 30px;
+    height: 30px;
 }

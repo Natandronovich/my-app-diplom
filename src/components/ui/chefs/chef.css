@@ -1,0 +1,64 @@
+/* .chefs{
+
+} */
+
+.chef-content{
+    display: flex;
+    padding: 30px 0;
+}
+
+.chef-card-title{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.divider{
+    width: 100%;
+    border-top: 1px solid #eaeaea;
+}
+
+.chef-subtext{
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    text-align: center;
+}
+
+.chef-image{
+    display: flex;
+    justify-content: center;
+}
+
+.column{
+    display: flex;
+    /* width: 100%; */
+    justify-content: center;
+    column-gap: 30px;
+    /* padding: 0 50px; */
+}
+
+.chef-image{
+    flex-shrink: 0;
+    max-width: 100%;
+}
+
+/* .chef-food-image{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chef-food-image img{
+    min-width: 100%;
+    min-height: 100%;
+    flex-shrink: 0;
+    } */
+
+.subtext-shef{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    max-width: 860px;
+}

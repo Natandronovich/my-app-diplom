@@ -3,6 +3,7 @@ import { StyledMain, mainStyles } from "./mainStyled";
 import { Route, Routes } from "react-router-dom";
 import {
   CheckAuthUser,
+  Chefs,
   Home,
   LoginForm,
   NotFoundComponent,
@@ -29,6 +30,7 @@ export const Main = () => {
           <Route path="/" element={<Home />} />
           <Route path="/recipes" element={<Recipes />} />
           <Route path="*" element={<NotFoundComponent />} />
+          <Route path="/chefs" element={<Chefs />} />
           <Route path="/signup" element={<SignUpForm />} />
           <Route
             path="/recipes/:id"
@@ -37,7 +39,6 @@ export const Main = () => {
                 <SinglePost />
               </CheckAuthUser>
             }
-            // element={<SinglePost />}
           />
         </Routes>
       </div>
