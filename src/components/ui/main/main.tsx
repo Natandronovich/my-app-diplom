@@ -16,10 +16,8 @@ import "../../../App.css";
 
 export const Main = () => {
   const dataContext = useContext(ThemeContext);
-  //   console.log("main page", dataContext);
 
   return (
-    // <div className="container">
     <StyledMain
       myTheme={dataContext.currentTheme}
       themeStyles={dataContext.stylesForTheme}
@@ -43,6 +41,5 @@ export const Main = () => {
         </Routes>
       </div>
     </StyledMain>
-    // </div>
   );
 };

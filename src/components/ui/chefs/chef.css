@@ -1,6 +1,3 @@
-/* .chefs{
-
-} */
 
 .chef-content{
     display: flex;
@@ -61,4 +58,9 @@
     font-size: 20px;
     line-height: 28px;
     max-width: 860px;
+}
+
+.chef__link{
+    text-decoration: none;
+
 }

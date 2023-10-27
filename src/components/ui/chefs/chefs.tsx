@@ -1,9 +1,10 @@
-import { FC, useContext } from "react";
-import { ThemeContext } from "../../../themeContext";
-import { dataChefs } from "./dataChefs";
+import { FC } from "react";
 import { UniversalChefCard } from "./universalChefCard";
 
 import "./chef.css";
+import { useSelector } from "react-redux";
+import { StoreType } from "../../../redux/store";
+import { dataChefs } from "./dataChefs";
 
 interface ChefProps {
   key?: string;
@@ -14,6 +15,7 @@ interface ChefProps {
   title?: string;
   subtext?: string;
   imageFood?: string;
+  socialTitle?: string;
 }
 
 export const Chefs: FC<ChefProps> = ({
@@ -25,12 +27,13 @@ export const Chefs: FC<ChefProps> = ({
   title,
   subtext,
   imageFood,
+  socialTitle,
 }) => {
-  //   const dataContext: any = useContext(ThemeContext);
+  // const chefsData = useSelector((state: StoreType) => state.chefsData);
   return (
     <>
       <div className="chefs">
-        {dataChefs.map((item) => (
+        {dataChefs.map((item: any) => (
           <UniversalChefCard
             key={item.id}
             id={item.id}
@@ -40,6 +43,7 @@ export const Chefs: FC<ChefProps> = ({
             title={item.title}
             subtext={item.subtext}
             imageFood={item.imageFood}
+            socialTitle={item.socialTitle}
           />
         ))}
       </div>

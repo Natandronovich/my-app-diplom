@@ -14,6 +14,12 @@ import { Button } from "../../shared/button/button";
 import "./postStyle.css";
 import heartFill from "../../../assets/heart-fill.png";
 import heart from "../../../assets/heart.png";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addSingleRecipe,
+  addToFavorites,
+} from "../../../redux/redusers/appReduser";
+import { AppDispatch, StoreType } from "../../../redux/store";
 
 export interface SingleRecipeItem {
   id: number;
@@ -27,21 +33,27 @@ export interface SingleRecipeItem {
 // { isFavorite }
 export const SinglePost = () => {
   const params = useParams();
-  console.log("params", params);
 
   const dataContext = useContext(ThemeContext);
 
   const dataAuthContext = useContext(AuthContext);
-  console.log("AUTH", dataAuthContext);
+
+  const singleRecipe = useSelector((state: StoreType) => state.singleRecipe);
+
+  const favoriteRecipes = useSelector(
+    (state: StoreType) => state.favoriteRecipes
+  );
 
   const navigate = useNavigate();
 
-  const [currentRecipe, setCurrentRecipe] = useState<SingleRecipeItem>();
+  // const [currentRecipe, setCurrentRecipe] = useState<SingleRecipeItem>();
   const [isLoadind, setIsLoadding] = useState<boolean>(false);
   const [error, setError] = useState("");
 
   // состояние для добавление в избарнное- изначально пустой массив
   const [favoriteRecipe, setFavoriteRecipe] = useState([]);
+
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     setIsLoadding(true);
@@ -56,12 +68,9 @@ export const SinglePost = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log("результат запроса", data);
-        setCurrentRecipe(data);
+        dispatch(addSingleRecipe(data));
         setError("");
-        console.log("current recipe", currentRecipe);
       })
-
       .catch((error) => {
         setError(error.message);
       })
@@ -86,19 +95,17 @@ export const SinglePost = () => {
     navigate(-1);
   };
 
-  // const logout = () => {
-  //   dataAuthContext.logoutF();
-  //   navigate("/");
-  // };
-
   //ф-ция по добавлению или удалению пользователей в favorite список
-  //   const onClickInFavorite = (id) => {
-  //     if (favoriteRecipe.includes(id)) {
-  //         setFavoriteRecipe((prev) => prev.filter((id) => id !== id));
-  //     } else {
-  //         setFavoriteRecipe((prev) => [...prev, id]);
-  //     }
-  //   };
+  const onClickInFavorite = (idRecipe: any) => {
+    dispatch(addToFavorites(idRecipe));
+  };
+  // const onClickInFavorite = (id) => {
+  //   if (favoriteRecipe.includes(id)) {
+  //       setFavoriteRecipe((prev) => prev.filter((id) => id !== id));
+  //   } else {
+  //       setFavoriteRecipe((prev) => [...prev, id]);
+  //   }
+  // };
 
   return (
     <div style={postsStyles.singleRecipeContainer}>
@@ -110,7 +117,7 @@ export const SinglePost = () => {
               : "title dark-theme title-recipe"
           }
         >
-          {currentRecipe?.title}
+          {singleRecipe?.title}
         </h3>
       </div>
       <SingleRecipeContainer
@@ -118,14 +125,14 @@ export const SinglePost = () => {
         themeStyles={dataContext.stylesForTheme}
       >
         <div className="single-post__image">
-          <img src={currentRecipe?.image} alt={currentRecipe?.title}></img>
+          <img src={singleRecipe?.image} alt={singleRecipe?.title}></img>
         </div>
 
         <div className="instructions">
           <h4 className="instructions-descr">
-            Ready in minutes: {currentRecipe?.readyInMinutes}
+            Ready in minutes: {singleRecipe?.readyInMinutes}
           </h4>
-          <p>{currentRecipe?.instructions.replace(/<\/?[a-zA-Z]+>/gi, "")}</p>
+          <p>{singleRecipe?.instructions.replace(/<\/?[a-zA-Z]+>/gi, "")}</p>
         </div>
         <div>
           <ButtonSinglePost
@@ -135,10 +142,15 @@ export const SinglePost = () => {
           >
             go back
           </ButtonSinglePost>
-          <img className="favorite-btn" src={heartFill} alt="heart" />
+          <img
+            className="favorite-btn"
+            onClick={() => onClickInFavorite(singleRecipe?.id)}
+            src={heartFill}
+            alt="heart"
+          />
           {/* <img
             className="favorite-btn"
-            onClick={() => onClickFavorite(id)}
+            onClick={() => onClickInFavorite(id)}
             src={`${isFavorite ? heartFill : heart}`}
             alt="Action"
             src={heart}

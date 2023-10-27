@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { postsStyles } from "../posts/postsStyled";
 import "./chef.css";
 
@@ -6,6 +7,7 @@ interface propsChefs {
   image: string;
   text: string;
   social: string;
+  socialTitle: string;
   title: string;
   subtext: string;
   imageFood?: string;
@@ -37,8 +39,10 @@ export const UniversalChefCard = (props: propsChefs) => {
               <div className="column container">
                 <div>
                   <p className="subtext-shef">Social:</p>
-                  <a href={props.social}>Instagram</a>
-                  {/* <p>{props.social}</p> */}
+                  <a href={props.social}>Instagram: </a>
+                  <NavLink className="chef__link" to={props.social}>
+                    {props.socialTitle}
+                  </NavLink>
                 </div>
                 <div>
                   <p>{props.text}</p>

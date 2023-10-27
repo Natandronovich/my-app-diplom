@@ -17,10 +17,8 @@ export const LoginForm = () => {
   const navigate = useNavigate();
 
   const dataFromAuthContext: any = useContext(AuthContext);
-  console.log(dataFromAuthContext);
 
   const dataFromNavigate = useLocation();
-  // console.log("dataFromNavigate", dataFromNavigate);
 
   const handleChange: any = (event: React.ChangeEvent<HTMLInputElement>) => {
     const targetItem = event.target;
@@ -70,7 +68,7 @@ export const LoginForm = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    console.log(userName, password);
+    // console.log(userName, password);
     if (userName && password) {
       dataFromAuthContext.loginF();
       navigate(`/recipes/${dataFromNavigate.state}`, { replace: true });

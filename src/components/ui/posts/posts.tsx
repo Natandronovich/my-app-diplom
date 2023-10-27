@@ -8,6 +8,9 @@ import { ErrorMessage } from "../../shared/errorMessage";
 import "./postStyle.css";
 import searchImg from "../../../assets/search.svg";
 import { categories } from "./recipesData";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, StoreType } from "../../../redux/store";
+import { addRecipes } from "../../../redux/redusers/appReduser";
 
 export interface RecipeItem {
   id: number;
@@ -29,13 +32,15 @@ export const Recipes = () => {
 
   const [searchValue, setSearchValue] = useState("");
 
-  // состояние для добавление в избарнное- изначально пустой массив
-  const [favoriteRecipe, setFavoriteRecipe] = useState([]);
+  // // состояние для добавление в избарнное- изначально пустой массив
+  // const [favoriteRecipe, setFavoriteRecipe] = useState([]);
 
-  // https://api.spoonacular.com/recipes/complexSearch?${category}
+  const recipesData = useSelector((state: StoreType) => state.recipesData);
+  const dispatch = useDispatch<AppDispatch>();
+
   const category = categoryId ? `cuisine=${categoryId}` : "";
 
-  useEffect(() => {
+  const getRecipes = () => {
     setIsLoadding(true);
     fetch(`https://api.spoonacular.com/recipes/complexSearch?${category}`, {
       method: "GET",
@@ -47,13 +52,35 @@ export const Recipes = () => {
         return response.json();
       })
       .then((data) => {
-        setRecipes(data.results);
+        dispatch(addRecipes(data.results));
         setError("");
       })
       .catch((error) => {
         setError(error.message);
       })
       .finally(() => setIsLoadding(false));
+  };
+
+  useEffect(() => {
+    getRecipes();
+    // setIsLoadding(true);
+    // fetch(`https://api.spoonacular.com/recipes/complexSearch?${category}`, {
+    //   method: "GET",
+    //   headers: {
+    //     "x-api-key": "e14e7905f7ae46fc8c3f11cf7c49d213",
+    //   },
+    // })
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     dispatch(addRecipes(data.results));
+    //     setError("");
+    //   })
+    //   .catch((error) => {
+    //     setError(error.message);
+    //   })
+    //   .finally(() => setIsLoadding(false));
   }, [categoryId]);
 
   if (isLoadind) {
@@ -109,7 +136,7 @@ export const Recipes = () => {
       <div style={postsStyles.postsContainer}>
         {error && <ErrorMessage errorText={error} />}
 
-        {recipes
+        {recipesData
           .filter((item) => {
             return item.title.toLowerCase().includes(searchValue.toLowerCase());
           })

@@ -16,7 +16,6 @@ export const Button = (props: ButtonProps) => {
   const navigate = useNavigate();
 
   const dataFromAuthContext: any = useContext(AuthContext);
-  console.log(dataFromAuthContext);
 
   const sendData = (event: React.MouseEvent<HTMLButtonElement>) => {
     const targetItem = event.target as HTMLButtonElement;

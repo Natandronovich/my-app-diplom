@@ -8,10 +8,10 @@ import { AuthContext } from "../../../authContext/authProvider";
 
 export const Header = () => {
   const dataContext: any = useContext(ThemeContext);
-  console.log("dataContext", dataContext);
+  // console.log("dataContext", dataContext);
 
   const dataFromContext = useContext(AuthContext);
-  console.log("AUTH", dataFromContext);
+  // console.log("AUTH", dataFromContext);
 
   const navigate = useNavigate();
 
