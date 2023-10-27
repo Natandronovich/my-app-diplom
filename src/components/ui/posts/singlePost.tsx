@@ -34,7 +34,7 @@ export const SinglePost = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(fetchSingleRecipe(`${params.id}`));
+    dispatch(fetchSingleRecipe(params.id));
   }, []);
 
   if (loading) {
@@ -56,9 +56,10 @@ export const SinglePost = () => {
   };
 
   //ф-ция по добавлению или удалению пользователей в favorite список
-  const onClickInFavorite = (idRecipe: any) => {
-    dispatch(addToFavorites(idRecipe));
-  };
+  // const onClickInFavorite = (idRecipe: any) => {
+  //   dispatch(addToFavorites(idRecipe));
+  // };
+
   // const onClickInFavorite = (id) => {
   //   if (favoriteRecipe.includes(id)) {
   //       setFavoriteRecipe((prev) => prev.filter((id) => id !== id));
@@ -108,7 +109,9 @@ export const SinglePost = () => {
             <ButtonSinglePost
               myTheme={dataContext.currentTheme}
               themeStyles={dataContext.stylesForTheme}
-              onClick={() => onClickInFavorite(singleRecipe?.id)}
+              onClick={() => {
+                dispatch(addToFavorites(singleRecipe?.id));
+              }}
             >
               Add to favorite
             </ButtonSinglePost>

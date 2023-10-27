@@ -11,45 +11,40 @@ const initialState: initialStateType = {
   error: null,
 };
 
-export const fetchRecipes =  createAsyncThunk<void, string>(
+export const fetchRecipes = createAsyncThunk<void, string>(
   "posts/fetchRecipes",
   async (category, { dispatch, rejectWithValue }) => {
-    try{
-      const result = await axiosApiConfig.get('/complexSearch?${category}')
-      dispatch(addRecipes(result.data.results))
-    }catch{
-
+    try {
+      const result = await axiosApiConfig.get(`/complexSearch?${category}`);
+      dispatch(addRecipes(result.data.results));
+    } catch (error: any) {
+      return rejectWithValue(error.message);
     }
-    })
+  }
+);
 
-
-export const fetchSingleRecipe =  createAsyncThunk<void, string>(
+export const fetchSingleRecipe = createAsyncThunk(
   "posts/fetchSingleRecipe",
-  async (singleId, { dispatch, rejectWithValue }) => {
-    try{
-      return fetch(`https://api.spoonacular.com/recipes/${singleId}/information`, {
-        method: "GET",
-        headers: {
-          "x-api-key": "e14e7905f7ae46fc8c3f11cf7c49d213",
-        },
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        dispatch(addSingleRecipe(data))})
-    }catch(error:any ){
-      return rejectWithValue(error.message)
-      }
-    })
+  async (singleId:any, { dispatch, rejectWithValue }) => {
+    try {
+      const result = await axiosApiConfig.get(`/${singleId}/information`);
+      console.log(result)
+      dispatch(addSingleRecipe(result.data));
+    }  catch (error: any) {
+      return rejectWithValue(error.message);
+    }
 
+  }
+);
 
 export const appSlice = createSlice({
   name: "app",
   initialState,
   reducers: {
-    addRecipes: (state, action:PayloadAction<Array<RecipeItem>>) => {
+    addRecipes: (state, action: PayloadAction<Array<RecipeItem>>) => {
       state.recipesData = action.payload;
     },
-    addSingleRecipe: (state, action:PayloadAction<SingleRecipeItem>) => {
+    addSingleRecipe: (state, action: PayloadAction<SingleRecipeItem>) => {
       state.singleRecipe = action.payload;
     },
     // PayloadAction<number>PayloadAction<Array<object>>
@@ -89,8 +84,7 @@ export const appSlice = createSlice({
       .addCase(fetchRecipes.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-      })
-
+      }),
 });
 
 export const { addToFavorites, addRecipes, addSingleRecipe } = appSlice.actions;
