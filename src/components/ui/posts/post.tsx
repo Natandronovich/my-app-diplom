@@ -1,7 +1,7 @@
 import { FC, useContext } from "react";
-import { RecipeItem } from "./posts";
 import { RecipeContainer, postsStyles } from "./postsStyled";
 import { ThemeContext } from "../../../themeContext";
+import { RecipeItem } from "../../../redux/redusers/types";
 
 interface RecipeCardProps {
   data: RecipeItem;

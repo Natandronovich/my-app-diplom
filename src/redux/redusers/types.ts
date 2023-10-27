@@ -1,10 +1,28 @@
-import { RecipeItem } from "../../components/ui/posts/posts";
-import { SingleRecipeItem } from "../../components/ui/posts/singlePost";
+// import { RecipeItem } from "../../components/ui/posts/posts";
 
   
   export type initialStateType = {
     recipesData: Array<RecipeItem>;
     singleRecipe:SingleRecipeItem | null;
-    // chefsData: Array<dataChefsObj>;
     favoriteRecipes: Array<object>;
+    loading: boolean,
+    error: any,
   };
+
+  export interface SingleRecipeItem {
+    id: number;
+    title: string;
+    image: string;
+    imageType: string;
+    instructions: string;
+    readyInMinutes: number;
+  }
+
+  export interface RecipeItem {
+    id: number;
+    title: string;
+    image: string;
+    imageType: string;
+  }
+  
+  // type RecipeItemArray = Array<RecipeItem>;

@@ -1,13 +1,46 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { initialStateType } from "./types";
-import { RecipeItem } from "../../components/ui/posts/posts";
-import { SingleRecipeItem } from "../../components/ui/posts/singlePost";
+// import { Recipes } from './../../components/ui/posts/posts';
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { RecipeItem, SingleRecipeItem, initialStateType } from "./types";
+import { axiosApiConfig } from "../../api/axiosConfig";
 
 const initialState: initialStateType = {
   recipesData: [],
   singleRecipe: null,
   favoriteRecipes: [{}],
+  loading: false,
+  error: null,
 };
+
+export const fetchRecipes =  createAsyncThunk<void, string>(
+  "posts/fetchRecipes",
+  async (category, { dispatch, rejectWithValue }) => {
+    try{
+      const result = await axiosApiConfig.get('/complexSearch?${category}')
+      dispatch(addRecipes(result.data.results))
+    }catch{
+
+    }
+    })
+
+
+export const fetchSingleRecipe =  createAsyncThunk<void, string>(
+  "posts/fetchSingleRecipe",
+  async (singleId, { dispatch, rejectWithValue }) => {
+    try{
+      return fetch(`https://api.spoonacular.com/recipes/${singleId}/information`, {
+        method: "GET",
+        headers: {
+          "x-api-key": "e14e7905f7ae46fc8c3f11cf7c49d213",
+        },
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch(addSingleRecipe(data))})
+    }catch(error:any ){
+      return rejectWithValue(error.message)
+      }
+    })
+
 
 export const appSlice = createSlice({
   name: "app",
@@ -31,6 +64,33 @@ export const appSlice = createSlice({
     //   state.favoriteRecipes = state.favoriteRecipes.filter((id) => id !== action.payload);
     // },
   },
+  extraReducers: (builder) =>
+    builder
+      .addCase(fetchSingleRecipe.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchSingleRecipe.fulfilled, (state, action) => {
+        // state.singleRecipe = action.payload;
+        state.loading = false;
+      })
+      .addCase(fetchSingleRecipe.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchRecipes.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchRecipes.fulfilled, (state, action) => {
+        // state.recipesData = action.payload;
+        state.loading = false;
+      })
+      .addCase(fetchRecipes.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+
 });
 
 export const { addToFavorites, addRecipes, addSingleRecipe } = appSlice.actions;
@@ -44,22 +104,3 @@ export const appReducer = appSlice.reducer;
 //       setFavoriteRecipe((prev) => [...prev, id]);
 //   }
 // };
-
-// addToFavorites: (state, action: PayloadAction<Product>) => {
-//   const favoriteRecipes= state.products.find(
-//     (recipes) => Recipe.item.id === action.payload.id,
-//   );
-
-//   if (recipes) {
-//     state.recipes = changeRecipes(state.recipes, {
-//       item: action.payload,
-//       count: existProduct.count + 1,
-//     });
-//   } else {
-//     state.recipes = [
-//       ...state.recipes,
-//       { item: action.payload, count: 1 },
-//     ];
-//   }
-
-//   saveProducts(state.products);

@@ -68,16 +68,11 @@ export const LoginForm = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    // console.log(userName, password);
     if (userName && password) {
       dataFromAuthContext.loginF();
       navigate(`/recipes/${dataFromNavigate.state}`, { replace: true });
     }
   };
-
-  // const goToSignUp = () => {
-  //   navigate("/signup");
-  // };
 
   return (
     <div style={formStyles.formWrapper}>
@@ -140,7 +135,6 @@ export const LoginForm = () => {
             className="button btn-login"
             buttonText="Log in"
           />
-          {/* <button onClick={goToSignUp}>Sign up</button> */}
           <Button id="button-signup" className="button" buttonText="Sign up" />
         </div>
       </FormContainer>

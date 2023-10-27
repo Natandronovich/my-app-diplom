@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { postsStyles } from "./postsStyled";
 import { ThemeContext } from "../../../themeContext";
 import { PostCard } from "./post";
@@ -10,80 +10,26 @@ import searchImg from "../../../assets/search.svg";
 import { categories } from "./recipesData";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, StoreType } from "../../../redux/store";
-import { addRecipes } from "../../../redux/redusers/appReduser";
-
-export interface RecipeItem {
-  id: number;
-  title: string;
-  image: string;
-  imageType: string;
-}
-
-type RecipeItemArray = Array<RecipeItem>;
+import { fetchRecipes } from "../../../redux/redusers/appReduser";
 
 export const Recipes = () => {
   const dataContext = useContext(ThemeContext);
 
   const [categoryId, setCategoryId] = useState("");
-  // console.log(categoryId);
-  const [recipes, setRecipes] = useState<RecipeItemArray>([]);
-  const [isLoadind, setIsLoadding] = useState<boolean>(false);
-  const [error, setError] = useState("");
-
   const [searchValue, setSearchValue] = useState("");
 
-  // // состояние для добавление в избарнное- изначально пустой массив
-  // const [favoriteRecipe, setFavoriteRecipe] = useState([]);
-
-  const recipesData = useSelector((state: StoreType) => state.recipesData);
+  const { recipesData, loading, error } = useSelector(
+    (state: StoreType) => state
+  );
   const dispatch = useDispatch<AppDispatch>();
 
   const category = categoryId ? `cuisine=${categoryId}` : "";
 
-  const getRecipes = () => {
-    setIsLoadding(true);
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?${category}`, {
-      method: "GET",
-      headers: {
-        "x-api-key": "e14e7905f7ae46fc8c3f11cf7c49d213",
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        dispatch(addRecipes(data.results));
-        setError("");
-      })
-      .catch((error) => {
-        setError(error.message);
-      })
-      .finally(() => setIsLoadding(false));
-  };
-
   useEffect(() => {
-    getRecipes();
-    // setIsLoadding(true);
-    // fetch(`https://api.spoonacular.com/recipes/complexSearch?${category}`, {
-    //   method: "GET",
-    //   headers: {
-    //     "x-api-key": "e14e7905f7ae46fc8c3f11cf7c49d213",
-    //   },
-    // })
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     dispatch(addRecipes(data.results));
-    //     setError("");
-    //   })
-    //   .catch((error) => {
-    //     setError(error.message);
-    //   })
-    //   .finally(() => setIsLoadding(false));
+    dispatch(fetchRecipes(`${category}`));
   }, [categoryId]);
 
-  if (isLoadind) {
+  if (loading) {
     return (
       <>
         <Bars
@@ -100,7 +46,7 @@ export const Recipes = () => {
   }
 
   //функция по поиску рецепта
-  const onChangeSearchValue = (event: any) => {
+  const onChangeSearchValue = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
   };
 

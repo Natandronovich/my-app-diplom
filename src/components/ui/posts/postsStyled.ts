@@ -84,4 +84,5 @@ export const ButtonSinglePost = styled.div<PostCardProps>`
     cursor: pointer;
     transition: all ease-in 0.5s;
     text-align:center;
+    margin-right:10px;
 `
