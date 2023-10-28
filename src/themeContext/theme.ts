@@ -9,7 +9,7 @@ enum Colors {
   RECIPES_BTN_BG_LIGHT = "#5c62ec",
 
   /* Dark mode */
-  PAGE_BG_DARK = "#252526",
+  PAGE_BG_DARK = "#3c3c3d",
   TEXT_COLOR_DARK = "#ffffff",
   TITLE_DARK = "#ffffff",
   RECIPES_CARD_BG_DARK = "#171718",

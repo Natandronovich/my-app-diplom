@@ -1,38 +1,19 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { deleteFromFavorites } from "../../../redux/redusers/appReduser";
-import {
-  RecipeContainer,
-  SingleRecipeContainer,
-  postsStyles,
-} from "../posts/postsStyled";
-import { useDispatch, useSelector } from "react-redux";
-import { useContext } from "react";
-import { ThemeContext } from "../../../themeContext";
-import { AppDispatch, StoreType } from "../../../redux/store";
+import { postsStyles } from "../posts/postsStyled";
+import { useSelector } from "react-redux";
+import { StoreType } from "../../../redux/store";
 import { FavoriteCard } from "./favoritesCard";
 
-export const Favorites = (
-  {
-    // key,
-    // id,
-    // image,
-    // text,
-    // social,
-    // title,
-    // subtext,
-    // imageFood,
-    // socialTitle,
-  }
-) => {
+import "./favorite.css";
+
+export const Favorites = () => {
   const { favoriteRecipes } = useSelector((state: StoreType) => state);
-  console.log("favoriteRecipes", favoriteRecipes);
 
   return (
     <>
       <div className="container recipes">
         <div style={postsStyles.postsContainer}>
           {favoriteRecipes.map((item) => (
-            <FavoriteCard data={item} />
+            <FavoriteCard key={item.id} data={item} />
           ))}
         </div>
       </div>

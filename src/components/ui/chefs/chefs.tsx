@@ -2,8 +2,6 @@ import { FC } from "react";
 import { UniversalChefCard } from "./universalChefCard";
 
 import "./chef.css";
-import { useSelector } from "react-redux";
-import { StoreType } from "../../../redux/store";
 import { dataChefs } from "./dataChefs";
 
 interface ChefProps {
@@ -29,7 +27,6 @@ export const Chefs: FC<ChefProps> = ({
   imageFood,
   socialTitle,
 }) => {
-  // const chefsData = useSelector((state: StoreType) => state.chefsData);
   return (
     <>
       <div className="chefs">

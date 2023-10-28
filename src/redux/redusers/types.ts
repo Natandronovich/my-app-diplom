@@ -1,11 +1,8 @@
-// import { RecipeItem } from "../../components/ui/posts/posts";
 
-  
   export type initialStateType = {
     recipesData: Array<RecipeItem>;
     singleRecipe:SingleRecipeItem | null;
     favoriteRecipes: Array<SingleRecipeItem>;
-    // favoriteRecipes: any;
     loading: boolean,
     error: any,
   };
@@ -17,6 +14,8 @@
     imageType: string;
     instructions: string;
     readyInMinutes: number;
+    summary?: string;
+    sourceUrl?: string;
   }
 
 
@@ -27,4 +26,3 @@
     imageType: string;
   }
   
-  // type RecipeItemArray = Array<RecipeItem>;

@@ -31,6 +31,7 @@
 .search {
   position: relative;
   padding-right: 20px;
+  margin-bottom: 10px;
 }
 
 .search input {
@@ -85,6 +86,7 @@
   font-weight: 500;
   font-size: 18px;
   border: 1px solid transparent;
+  margin-bottom: 10px;
   transition: all 0.15s ease-in-out;
 }
 
@@ -108,4 +110,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media (max-width: 800px) {
+  .instructions-descr {
+    font-size: 20px;
+  }
+
+  .title-favorite-recipe {
+    font-size: 25px;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+  }
+
+  .single-post__image {
+    margin-bottom: 15px;
+  }
 }

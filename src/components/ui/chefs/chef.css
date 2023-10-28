@@ -40,18 +40,6 @@
     max-width: 100%;
 }
 
-/* .chef-food-image{
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.chef-food-image img{
-    min-width: 100%;
-    min-height: 100%;
-    flex-shrink: 0;
-    } */
 
 .subtext-shef{
     font-weight: 400;
@@ -62,5 +50,14 @@
 
 .chef__link{
     text-decoration: none;
+    transition: opacity 0.2s ease-in;
 
+}
+
+.chef__link.dark-theme{
+	color: #ffffff;
+}
+
+.website-link:hover {
+	opacity: 0.8;
 }

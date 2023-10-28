@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import {
   ButtonSinglePost,
   SingleRecipeContainer,
@@ -9,8 +9,6 @@ import { ThemeContext } from "../../../themeContext";
 import { Bars } from "react-loader-spinner";
 
 import "./postStyle.css";
-// import heartFill from "../../../assets/heart-fill.png";
-// import heart from "../../../assets/heart.png";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToFavorites,
@@ -22,7 +20,7 @@ import { ErrorMessage } from "../../shared/errorMessage";
 export const SinglePost = () => {
   const params = useParams();
   const dataContext = useContext(ThemeContext);
-  const { singleRecipe, loading, error, favoriteRecipes } = useSelector(
+  const { singleRecipe, loading, error } = useSelector(
     (state: StoreType) => state
   );
 
@@ -51,19 +49,6 @@ export const SinglePost = () => {
   const handleGoBack = () => {
     navigate(-1);
   };
-
-  //ф-ция по добавлению или удалению пользователей в favorite список
-  // const onClickInFavorite = (idRecipe: any) => {
-  //   dispatch(addToFavorites(idRecipe));
-  // };
-
-  // const onClickInFavorite = (id) => {
-  //   if (favoriteRecipe.includes(id)) {
-  //       setFavoriteRecipe((prev) => prev.filter((id) => id !== id));
-  //   } else {
-  //       setFavoriteRecipe((prev) => [...prev, id]);
-  //   }
-  // };
 
   return (
     <div style={postsStyles.singleRecipeContainer}>

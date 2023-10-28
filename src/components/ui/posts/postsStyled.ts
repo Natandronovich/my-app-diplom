@@ -5,6 +5,7 @@ interface PostCardProps {
   myTheme: ThemeType;
   themeStyles: Theme;
   key?: number;
+  padding?: string;
 }
 
 export const RecipeContainer = styled.div<PostCardProps>`
@@ -62,8 +63,10 @@ box-shadow: ${({ themeStyles }) => themeStyles.cardBoxShadow};
 border-radius: 10px;
 max-width: 500px;
 // height: 370px;
-padding:30px
+padding:30px;
 
+@media (max-width: 768px) {
+  padding:15px;
 }
 `;
 
@@ -77,7 +80,7 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 align-items: center;
-padding: 25px ;
+padding: 25px;
 margin-bottom: 30px;
 }`
 

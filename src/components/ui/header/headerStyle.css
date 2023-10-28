@@ -1,68 +1,104 @@
 .header {
-	padding: 20px 0;
-	background-color: #171718;
-	border-bottom: 1px solid #26292d;
-	color: #ffffff;
-	letter-spacing: normal;
+  padding: 20px 0;
+  background-color: #171718;
+  border-bottom: 1px solid #26292d;
+  color: #ffffff;
+  letter-spacing: normal;
 }
 
 .header-row {
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	column-gap: 30px;
-	row-gap: 20px;
-	flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  column-gap: 30px;
+  row-gap: 20px;
+  flex-wrap: wrap;
 }
 
 .logo {
-	margin-right: auto;
-	color: #ffffff;
-	font-size: 24px;
-	font-family: 'Poppins', sans-serif;
+  margin-right: auto;
+  color: #ffffff;
+  font-size: 24px;
+  font-family: "Poppins", sans-serif;
 }
 
 .logo strong {
-	font-weight: 700;
+  font-weight: 700;
 }
 
 .header-list {
-	display: flex;
-	flex-wrap: wrap;
-	row-gap: 10px;
-	align-items: center;
-	column-gap: 40px;
-	font-size: 16px;
-	font-weight: 500;
-	font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  align-items: center;
+  column-gap: 40px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
 }
 
 .header-list__link {
-	color: #ffffff;
-	transition: opacity 0.2s ease-in;
+  color: #ffffff;
+  transition: opacity 0.2s ease-in;
 }
 
 .header-list__link:hover {
-	opacity: 0.8;
+  opacity: 0.8;
 }
 
 .header-list__link-active {
-	position: relative;
+  position: relative;
 }
 
 .header-list__link-active::before {
-	content: '';
-	position: absolute;
-	left: 0;
-	top: 100%;
-	display: block;
-	height: 2px;
-	width: 100%;
-	background-color: #5c62ec;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: #5c62ec;
 }
 
-
+.mobile-btn {
+  display: none;
+}
 
 /* .logout-btn:hover {
 	color: #ffffff5c;
 } */
+
+@media (max-width: 800px) {
+  .mobile-btn {
+    display: block;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .header-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    font-size: 25px;
+    left: -100%;
+    /* left: 0; */
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #171718;
+    z-index: 10;
+    transition: left 1s;
+  }
+
+  .active {
+    left: 0;
+  }
+
+  .header-row {
+    column-gap: 9px;
+  }
+}

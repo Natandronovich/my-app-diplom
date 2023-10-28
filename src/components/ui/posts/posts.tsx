@@ -88,7 +88,7 @@ export const Recipes = () => {
           })
           .map((item) => (
             <Link to={`/recipes/${item.id}`}>
-              <PostCard data={item} />
+              <PostCard key={item.id} data={item} />
             </Link>
           ))}
       </div>

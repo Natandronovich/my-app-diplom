@@ -14,9 +14,6 @@ interface propsChefs {
 }
 
 export const UniversalChefCard = (props: propsChefs) => {
-  // const dataContext: any = useContext(ThemeContext);
-  // console.log(dataContext);
-
   return (
     <>
       <div>
@@ -47,9 +44,6 @@ export const UniversalChefCard = (props: propsChefs) => {
                 <div>
                   <p>{props.text}</p>
                 </div>
-                {/* <div className="chef-food-image">
-                  <img src={props.imageFood} alt={props.title} />
-                </div> */}
               </div>
             </div>
           </div>
