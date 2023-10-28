@@ -3,14 +3,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { ThemeButton } from "../changeThemeButton/themeButton";
 import { AuthContext } from "../../../authContext/authProvider";
-import { ThemeContext } from "../../../themeContext";
 import logo from "./Logo.png";
 
 import "./headerStyle.css";
 
 export const Header = () => {
   const [nav, setNav] = useState(false);
-  const dataContext: any = useContext(ThemeContext);
 
   const dataFromContext = useContext(AuthContext);
 

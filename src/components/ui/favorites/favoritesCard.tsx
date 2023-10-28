@@ -2,7 +2,7 @@ import { FC, useContext } from "react";
 import { SingleRecipeItem } from "../../../redux/redusers/types";
 import { ButtonSinglePost, FavoriteContainer } from "../posts/postsStyled";
 import { ThemeContext } from "../../../themeContext";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../redux/store";
 import { deleteFromFavorites } from "../../../redux/redusers/appReduser";
