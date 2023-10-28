@@ -10,7 +10,6 @@ export const CheckAuthUser = ({ children }: CheckAuthUserProps) => {
   const { userAuth } = useContext(AuthContext);
 
   const paramsFromUrl = useParams();
-  // console.log("paras url", paramsFromUrl);
 
   if (!userAuth) {
     return (
