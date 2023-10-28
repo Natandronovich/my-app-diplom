@@ -36,7 +36,7 @@ export const UniversalChefCard = (props: propsChefs) => {
               <div className="column container">
                 <div>
                   <p className="subtext-shef">Social:</p>
-                  <a href={props.social}>Instagram: </a>
+                  <p>Instagram: </p>
                   <NavLink className="chef__link" to={props.social}>
                     {props.socialTitle}
                   </NavLink>
