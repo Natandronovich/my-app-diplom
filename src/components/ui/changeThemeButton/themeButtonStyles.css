@@ -24,9 +24,9 @@
   height: 24px;
   background-color: #ffffff;
   border-radius: 50%;
-  transition: all 0.5s ease-in;
+  transition: left  0.5s ease-in;
 }
 
-.dark-mode-btn--active::before {
+.dark-mode-btn.active::before {
     left: 26px;
   }

@@ -34,15 +34,17 @@ export const SinglePost = () => {
 
   if (loading) {
     return (
-      <Bars
-        height="80"
-        width="80"
-        color="#5C4EAE"
-        ariaLabel="bars-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
-        visible={true}
-      />
+      <div className="loader">
+        <Bars
+          height="80"
+          width="80"
+          color="#5C4EAE"
+          ariaLabel="bars-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      </div>
     );
   }
 
@@ -76,7 +78,14 @@ export const SinglePost = () => {
           <h4 className="instructions-descr">
             Ready in minutes: {singleRecipe?.readyInMinutes}
           </h4>
-          <p>{singleRecipe?.instructions.replace(/<\/?[a-zA-Z]+>/gi, "")}</p>
+          <h3 className="instructions-descr-subtitle">Ingridients:</h3>
+          {singleRecipe?.extendedIngredients.map((item) => (
+            <h4 key={item.id}>{item.original}</h4>
+          ))}
+          <h3 className="instructions-descr-title">Instructions:</h3>
+          <p className="instructions-descr-text">
+            {singleRecipe?.instructions.replace(/<\/?[a-zA-Z]+>/gi, "")}
+          </p>
         </div>
         <div>
           <div className="single-recipe-btns">

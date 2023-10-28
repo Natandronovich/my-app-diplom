@@ -65,9 +65,6 @@
   display: none;
 }
 
-/* .logout-btn:hover {
-	color: #ffffff5c;
-} */
 
 @media (max-width: 800px) {
   .mobile-btn {

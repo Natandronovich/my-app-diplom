@@ -47,7 +47,11 @@ export const FavoriteCard: FC<FavoriteCardProps> = ({ data }) => {
         <h4 className="instructions-descr">
           Ready in minutes: {data.readyInMinutes}
         </h4>
-        <a
+        <h3 className="instructions-descr-subtitle">Ingridients:</h3>
+        {data?.extendedIngredients.map((item) => (
+          <h4 key={item.id}>{item.original}</h4>
+        ))}
+        {/* <a
           className={
             dataContext.currentTheme === "light"
               ? "website-link"
@@ -57,29 +61,27 @@ export const FavoriteCard: FC<FavoriteCardProps> = ({ data }) => {
           target="_blank"
         >
           go to website
-        </a>
-        {/* <p>{data.instructions.replace(/<\/?[a-zA-Z]+>/gi, "")}</p> */}
+        </a> */}
       </div>
-      <div>
-        <div className="single-recipe-btns">
-          <ButtonSinglePost
-            myTheme={dataContext.currentTheme}
-            themeStyles={dataContext.stylesForTheme}
-            onClick={handleGoBack}
-          >
-            go back
-          </ButtonSinglePost>
 
-          <ButtonSinglePost
-            myTheme={dataContext.currentTheme}
-            themeStyles={dataContext.stylesForTheme}
-            onClick={() => {
-              dispatch(deleteFromFavorites(data.id));
-            }}
-          >
-            Delete
-          </ButtonSinglePost>
-        </div>
+      <div className="single-recipe-btns">
+        <ButtonSinglePost
+          myTheme={dataContext.currentTheme}
+          themeStyles={dataContext.stylesForTheme}
+          onClick={handleGoBack}
+        >
+          go back
+        </ButtonSinglePost>
+
+        <ButtonSinglePost
+          myTheme={dataContext.currentTheme}
+          themeStyles={dataContext.stylesForTheme}
+          onClick={() => {
+            dispatch(deleteFromFavorites(data.id));
+          }}
+        >
+          Delete
+        </ButtonSinglePost>
       </div>
     </FavoriteContainer>
   );

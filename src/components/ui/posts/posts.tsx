@@ -31,7 +31,7 @@ export const Recipes = () => {
 
   if (loading) {
     return (
-      <>
+      <div className="loader">
         <Bars
           height="80"
           width="80"
@@ -41,7 +41,7 @@ export const Recipes = () => {
           wrapperClass=""
           visible={true}
         />
-      </>
+      </div>
     );
   }
 
