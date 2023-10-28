@@ -1,26 +1,32 @@
-.button{
-    font-weight: 700;
-    font-size: 14px;
-    width: 170px;
-    height: 40px;
-    padding: 5px;
-    border: 1px solid #5c62ec;
-    background: transparent;
-    font-weight: 600;
-    color: #5c62ec;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all ease-in 0.5s;
+.button {
+  font-weight: 700;
+  font-size: 14px;
+  width: 125px;
+  height: 40px;
+  padding: 5px;
+  border: 1px solid #5c62ec;
+  background: transparent;
+  font-weight: 600;
+  color: #5c62ec;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all ease-in 0.5s;
 }
 
-.btn-login{
-    background: #5c62ec;
-    color: #ffffff;
+.btn-login {
+  background: #5c62ec;
+  color: #ffffff;
 }
 
-.button:hover{
-    opacity: 0.7;
-    background: #5c62ec;
-    border: none;
-    color: #ffffff;
+.button:hover {
+  opacity: 0.7;
+  background: #5c62ec;
+  border: none;
+  color: #ffffff;
+}
+
+@media (max-width: 400px) {
+  .button {
+    width: 90px;
+  }
 }

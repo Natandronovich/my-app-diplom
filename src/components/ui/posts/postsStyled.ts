@@ -32,6 +32,7 @@ export const postsStyles: PostStyleType = {
     columnGap: '30px',
     rowGap: '30px',
     padding: '50px 0',
+    // position: "relative",
 
   },
   postImage:{
@@ -64,6 +65,7 @@ border-radius: 10px;
 max-width: 500px;
 // height: 370px;
 padding:30px;
+position:relative;
 
 @media (max-width: 768px) {
   padding:15px;
@@ -103,9 +105,11 @@ export const ButtonSinglePost = styled.div<PostCardProps>`
     transition: all 0.5s ease-out;
      &:hover,
   &:focus {
-    background: #3824ac8d;
+    background: linear-gradient(137deg, #5c62ec 4.83%, #5144A0 98.22%);
+    transition: all 0.5s ease-out;
   }
   &:active {
     background: #5d42f2;
+    transition: all 0.5s ease-out;
   }
 `

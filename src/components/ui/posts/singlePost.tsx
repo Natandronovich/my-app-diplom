@@ -79,34 +79,36 @@ export const SinglePost = () => {
             Ready in minutes: {singleRecipe?.readyInMinutes}
           </h4>
           <h3 className="instructions-descr-subtitle">Ingridients:</h3>
-          {singleRecipe?.extendedIngredients.map((item) => (
-            <h4 key={item.id}>{item.original}</h4>
-          ))}
+          <ul className="recipe-ingredients__list">
+            {singleRecipe?.extendedIngredients.map((item) => (
+              <li className="recipe-ingredients" key={item.id}>
+                {item.original}
+              </li>
+            ))}
+          </ul>
           <h3 className="instructions-descr-title">Instructions:</h3>
           <p className="instructions-descr-text">
             {singleRecipe?.instructions.replace(/<\/?[a-zA-Z]+>/gi, "")}
           </p>
         </div>
-        <div>
-          <div className="single-recipe-btns">
-            <ButtonSinglePost
-              myTheme={dataContext.currentTheme}
-              themeStyles={dataContext.stylesForTheme}
-              onClick={handleGoBack}
-            >
-              go back
-            </ButtonSinglePost>
+        <div className="single-recipe-btns">
+          <ButtonSinglePost
+            myTheme={dataContext.currentTheme}
+            themeStyles={dataContext.stylesForTheme}
+            onClick={handleGoBack}
+          >
+            go back
+          </ButtonSinglePost>
 
-            <ButtonSinglePost
-              myTheme={dataContext.currentTheme}
-              themeStyles={dataContext.stylesForTheme}
-              onClick={() => {
-                dispatch(addToFavorites(singleRecipe));
-              }}
-            >
-              To favorite
-            </ButtonSinglePost>
-          </div>
+          <ButtonSinglePost
+            myTheme={dataContext.currentTheme}
+            themeStyles={dataContext.stylesForTheme}
+            onClick={() => {
+              dispatch(addToFavorites(singleRecipe));
+            }}
+          >
+            To favorite
+          </ButtonSinglePost>
         </div>
       </SingleRecipeContainer>
     </div>

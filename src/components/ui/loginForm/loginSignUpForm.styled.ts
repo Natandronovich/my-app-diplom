@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FormContainer = styled.form`
-  min-width: 400px;
+  max-width: 400px;
   background-color: #ffffff;
   box-shadow: 0px 5px 35px rgba(0, 0, 0, 0.25);
   border-radius: 10px;

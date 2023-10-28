@@ -40,7 +40,7 @@ export const FavoriteCard: FC<FavoriteCardProps> = ({ data }) => {
         </h3>
       </div>
       <div className="single-post__image">
-        <img src={data.image} alt={data.title}></img>
+        <img src={data.image} alt={data.title} />
       </div>
 
       <div className="instructions">
@@ -48,29 +48,22 @@ export const FavoriteCard: FC<FavoriteCardProps> = ({ data }) => {
           Ready in minutes: {data.readyInMinutes}
         </h4>
         <h3 className="instructions-descr-subtitle">Ingridients:</h3>
-        {data?.extendedIngredients.map((item) => (
-          <h4 key={item.id}>{item.original}</h4>
-        ))}
-        {/* <a
-          className={
-            dataContext.currentTheme === "light"
-              ? "website-link"
-              : "website-link dark-theme"
-          }
-          href={data.sourceUrl}
-          target="_blank"
-        >
-          go to website
-        </a> */}
+        <ul className="favorite-ingredients__list">
+          {data?.extendedIngredients.map((item) => (
+            <li className="recipe-ingredients" key={item.id}>
+              {item.original}
+            </li>
+          ))}
+        </ul>
       </div>
 
-      <div className="single-recipe-btns">
+      <div className="favorite-recipe-btns">
         <ButtonSinglePost
           myTheme={dataContext.currentTheme}
           themeStyles={dataContext.stylesForTheme}
           onClick={handleGoBack}
         >
-          go back
+          Go back
         </ButtonSinglePost>
 
         <ButtonSinglePost
