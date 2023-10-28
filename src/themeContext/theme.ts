@@ -1,7 +1,7 @@
 enum Colors {
   /* Light mode */
   PAGE_BG_LIGHT = "#ffffff",
-  TEXT_COLOR_LIGHT =  "#171718",
+  TEXT_COLOR_LIGHT = "#171718",
   TITLE_LIGHT = "#b8e6e6ec",
   RECIPES_CARD_BG_LIGHT = "#ffffff",
   RECIPES_CARD_TEXT_LIGHT = "#171718",
@@ -27,7 +27,6 @@ export interface Theme {
   cardText: Colors;
   cardBoxShadow: Colors;
   backgroundBtn: Colors;
-//   fontSize: string;
 }
 
 type ThemesType = Record<ThemeType, Theme>;
@@ -39,8 +38,7 @@ export const Themes: ThemesType = {
     cardBackground: Colors.RECIPES_CARD_BG_LIGHT,
     cardText: Colors.RECIPES_CARD_TEXT_LIGHT,
     cardBoxShadow: Colors.BOX_SHADOW_LIGHT,
-    backgroundBtn: Colors.RECIPES_BTN_BG_LIGHT ,
-    // fontSize: "20px",
+    backgroundBtn: Colors.RECIPES_BTN_BG_LIGHT,
   },
 
   dark: {
@@ -50,6 +48,5 @@ export const Themes: ThemesType = {
     cardText: Colors.RECIPES_CARD_TEXT_DARK,
     cardBoxShadow: Colors.BOX_SHADOW_DARK,
     backgroundBtn: Colors.RECIPES_BTN_BG_DARK,
-    // fontSize: "16px",
   },
 };

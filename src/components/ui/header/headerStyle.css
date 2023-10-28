@@ -65,7 +65,6 @@
   display: none;
 }
 
-
 @media (max-width: 800px) {
   .mobile-btn {
     display: block;
@@ -80,7 +79,6 @@
     position: fixed;
     font-size: 25px;
     left: -100%;
-    /* left: 0; */
     right: 0;
     top: 0;
     bottom: 0;

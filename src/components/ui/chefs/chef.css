@@ -28,10 +28,8 @@
 
 .column {
   display: flex;
-  /* width: 100%; */
   justify-content: center;
   column-gap: 30px;
-  /* padding: 0 50px; */
 }
 
 .chef-image {

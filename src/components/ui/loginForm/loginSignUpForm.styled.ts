@@ -21,7 +21,6 @@ export const formStyles: FormStyleType = {
     justifyContent: "center",
     alignItems: "center",
     minHeight: "80vh",
-    // maxWidth: '1200px',
     margin: "0 auto",
     padding: "0 15px",
   },
