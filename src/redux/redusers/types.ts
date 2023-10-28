@@ -4,7 +4,8 @@
   export type initialStateType = {
     recipesData: Array<RecipeItem>;
     singleRecipe:SingleRecipeItem | null;
-    favoriteRecipes: Array<object>;
+    favoriteRecipes: Array<SingleRecipeItem>;
+    // favoriteRecipes: any;
     loading: boolean,
     error: any,
   };
@@ -17,6 +18,7 @@
     instructions: string;
     readyInMinutes: number;
   }
+
 
   export interface RecipeItem {
     id: number;

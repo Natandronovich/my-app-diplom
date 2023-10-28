@@ -63,12 +63,12 @@ export const Header = () => {
             </li>
             <li className="header-list__item">
               <NavLink
-                to="/contacts"
+                to="/favorites"
                 className={({ isActive }) =>
                   isActive ? activeLink : normalLink
                 }
               >
-                Contacts
+                Favorites
               </NavLink>
             </li>
           </ul>

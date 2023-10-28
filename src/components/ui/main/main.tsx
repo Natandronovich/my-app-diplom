@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import {
   CheckAuthUser,
   Chefs,
+  Favorites,
   Home,
   LoginForm,
   NotFoundComponent,
@@ -30,6 +31,7 @@ export const Main = () => {
           <Route path="*" element={<NotFoundComponent />} />
           <Route path="/chefs" element={<Chefs />} />
           <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/favorites" element={<Favorites />} />
           <Route
             path="/recipes/:id"
             element={

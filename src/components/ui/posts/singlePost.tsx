@@ -28,9 +28,6 @@ export const SinglePost = () => {
 
   const navigate = useNavigate();
 
-  // состояние для добавление в избарнное- изначально пустой массив
-  const [favoriteRecipe, setFavoriteRecipe] = useState([]);
-
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -110,10 +107,10 @@ export const SinglePost = () => {
               myTheme={dataContext.currentTheme}
               themeStyles={dataContext.stylesForTheme}
               onClick={() => {
-                dispatch(addToFavorites(singleRecipe?.id));
+                dispatch(addToFavorites(singleRecipe));
               }}
             >
-              Add to favorite
+              To favorite
             </ButtonSinglePost>
           </div>
         </div>

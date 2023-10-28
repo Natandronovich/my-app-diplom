@@ -6,7 +6,7 @@ import { axiosApiConfig } from "../../api/axiosConfig";
 const initialState: initialStateType = {
   recipesData: [],
   singleRecipe: null,
-  favoriteRecipes: [{}],
+  favoriteRecipes: [],
   loading: false,
   error: null,
 };
@@ -15,7 +15,7 @@ export const fetchRecipes = createAsyncThunk<void, string>(
   "posts/fetchRecipes",
   async (category, { dispatch, rejectWithValue }) => {
     try {
-      const result = await axiosApiConfig.get(`/complexSearch?${category}`);
+      const result = await axiosApiConfig.get(`/complexSearch?${category}&number=50`);
       dispatch(addRecipes(result.data.results));
     } catch (error: any) {
       return rejectWithValue(error.message);
@@ -49,15 +49,16 @@ export const appSlice = createSlice({
     },
     // PayloadAction<number>PayloadAction<Array<object>>
     addToFavorites: (state, action) => {
-      // state.favoriteRecipes.push(action.payload)
-      state.favoriteRecipes = action.payload;
+      state.favoriteRecipes.push(action.payload)
+      // state.favoriteRecipes = action.payload;
 
-      // state.favoriteRecipes = state.favoriteRecipes.filter((id) => id !== action.payload);
+      
       console.log("FAVORITE FROM REDUX", state.favoriteRecipes);
     },
-    // deleteFromFavorites: (state, action){
-    //   state.favoriteRecipes = state.favoriteRecipes.filter((id) => id !== action.payload);
-    // },
+    deleteFromFavorites: (state, action)=>{
+      // state.favoriteRecipes = state.favoriteRecipes.filter((id) => id !== action.payload);
+      state.favoriteRecipes = state.favoriteRecipes.filter((item) => item.id !== action.payload);
+    },
   },
   extraReducers: (builder) =>
     builder
@@ -87,7 +88,7 @@ export const appSlice = createSlice({
       }),
 });
 
-export const { addToFavorites, addRecipes, addSingleRecipe } = appSlice.actions;
+export const { addToFavorites, addRecipes, addSingleRecipe, deleteFromFavorites } = appSlice.actions;
 
 export const appReducer = appSlice.reducer;
 

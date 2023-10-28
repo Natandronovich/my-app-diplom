@@ -55,6 +55,18 @@ export const postsStyles: PostStyleType = {
 
 };
 
+export const FavoriteContainer = styled.div<PostCardProps>`
+background-color: ${({ themeStyles }) => themeStyles.cardBackground};
+color: ${({ themeStyles }) => themeStyles.text};
+box-shadow: ${({ themeStyles }) => themeStyles.cardBoxShadow};
+border-radius: 10px;
+max-width: 500px;
+// height: 370px;
+padding:30px
+
+}
+`;
+
 
 export const SingleRecipeContainer = styled.div<PostCardProps>`
 background-color: #ffffff;
@@ -85,4 +97,12 @@ export const ButtonSinglePost = styled.div<PostCardProps>`
     transition: all ease-in 0.5s;
     text-align:center;
     margin-right:10px;
+    transition: all 0.5s ease-out;
+     &:hover,
+  &:focus {
+    background: #3824ac8d;
+  }
+  &:active {
+    background: #5d42f2;
+  }
 `
