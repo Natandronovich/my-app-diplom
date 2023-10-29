@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/my-app-diplom/static/css/main.f3cc2aea.css",
+    "main.js": "/my-app-diplom/static/js/main.46351767.js",
+    "static/media/food-image.png": "/my-app-diplom/static/media/food-image.65ec2817fb38cb51cbe7.png",
+    "index.html": "/my-app-diplom/index.html",
+    "static/media/search.svg": "/my-app-diplom/static/media/search.b26c77d490aff549d7f002e9264263a7.svg",
+    "main.f3cc2aea.css.map": "/my-app-diplom/static/css/main.f3cc2aea.css.map",
+    "main.46351767.js.map": "/my-app-diplom/static/js/main.46351767.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f3cc2aea.css",
+    "static/js/main.46351767.js"
+  ]
+}
