@@ -27,6 +27,7 @@ export const Main = () => {
         <Routes>
           <Route path="/login" element={<LoginForm />} />
           <Route path="/" element={<Home />} />
+          <Route path="/my-app-diplom/" element={<Home />} />
           <Route path="/recipes" element={<Recipes />} />
           <Route path="*" element={<NotFoundComponent />} />
           <Route path="/chefs" element={<Chefs />} />

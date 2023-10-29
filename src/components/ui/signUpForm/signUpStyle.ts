@@ -7,7 +7,7 @@ export const signUpStyles: SignUpFormStyleType = {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "50px 0",
+        padding: "50px 5px",
     },
     formInputs: {
         display: "flex",

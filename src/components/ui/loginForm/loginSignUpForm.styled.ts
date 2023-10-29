@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FormContainer = styled.form`
-  max-width: 400px;
+  min-width: 400px;
   background-color: #ffffff;
   box-shadow: 0px 5px 35px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
@@ -9,6 +9,16 @@ export const FormContainer = styled.form`
   flex-direction: column;
   justify-content: center;
   padding: 30px;
+
+  @media (max-width: 450px) {
+  max-width: 400px;
+  min-width: 300px;
+
+  @media (max-width: 400px) {
+    max-width: 300px;
+    min-width: 277px;
+  }
+  }
 `;
 interface FormStyleType {
   [key: string]: React.CSSProperties;
